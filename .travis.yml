@@ -14,3 +14,9 @@ after_script:
     - docker build -t omar/multi-nginx ./nginx
     - docker build -t omar/multi-server ./server
     - docker build -t omar/multi-worker ./worker
+
+    - echo "$DOCKER_PASSWORD" | docker ogin -u "$DOCKER_NAME" --password-stdin
+    - docker push omar/multi-client
+    - docker push omar/multi-nginx
+    - docker push omar/multi-server
+    - docker push omar/multi-worker
